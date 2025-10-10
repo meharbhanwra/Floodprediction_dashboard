@@ -4,7 +4,7 @@ import time
 import random
 
 # --- Configuration ---
-API_KEY = "38c98c68d8730e75016858a74c318970" # Not used in demo mode
+API_KEY = "API KEY" # Not used in demo mode
 LIVE_CITY = "Chennai"
 SERVER_URL = "http://127.0.0.1:5000/data"
 
