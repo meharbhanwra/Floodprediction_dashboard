@@ -8,7 +8,7 @@ MQTT_BROKER = "broker.hivemq.com"
 MQTT_PORT = 1883
 # IMPORTANT: Make this topic unique to you!
 MQTT_TOPIC = "ishani-jindal/flood-sensor/drain01" 
-SERVER_URL = "http://127.0.0.1:5000/data"
+SERVER_URL = "https://floodprediction-dashboard.onrender.com"
 
 def on_connect(client, userdata, flags, rc):
     """Callback for when the client connects to the broker."""
