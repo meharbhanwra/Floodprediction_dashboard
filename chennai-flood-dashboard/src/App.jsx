@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Waves, List } from 'lucide-react';
 import { SignedIn, SignedOut, RedirectToSignIn, useClerk } from "@clerk/clerk-react";
 import MapDisplay from './components/MapDisplay.jsx';
@@ -64,8 +65,8 @@ function LogoutButton() {
     );
 }
 
-// --- Main App Component ---
-function App() {
+// --- Main App Component (Dashboard Logic) ---
+function DashboardApp() {
     const [locations, setLocations] = useState([]);
     const [selectedLocationId, setSelectedLocationId] = useState(null);
     const [rerouteData, setRerouteData] = useState(null);
@@ -195,6 +196,18 @@ function App() {
                 </div>
             </SignedIn>
         </>
+    );
+}
+
+
+function App() {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<DashboardApp />} />
+                <Route path="/dashboard" element={<DashboardApp />} />
+            </Routes>
+        </Router>
     );
 }
 
