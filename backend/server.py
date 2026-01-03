@@ -150,5 +150,15 @@ def get_suggestions():
         return jsonify({"error": "Could not generate suggestions"}), 500
 # --- END ADDED SECTION ---
 
+# --- ADDED: DEFAULT ROUTE & HEALTH CHECK ---
+@app.route("/")
+def home():
+    return "Flood Prediction Backend is Running 🚀"
+
+@app.route("/health")
+def health():
+    return jsonify({"status": "ok"})
+# --- END ADDED SECTION ---
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
