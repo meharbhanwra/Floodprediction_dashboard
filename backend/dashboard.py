@@ -5,7 +5,7 @@ import joblib
 import time
 
 # --- Configuration ---
-SERVER_URL = "http://127.0.0.1:5000/data"
+SERVER_URL = "https://floodprediction-dashboard.onrender.com/data"
 MODEL_PATH = "rf_flood_model.joblib"
 # We will use the live Chennai node for our main prediction
 PREDICTION_NODE_ID = "live_chennai"

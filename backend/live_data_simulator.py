@@ -3,15 +3,14 @@ import json
 import time
 import random
 
-# --- Configuration ---
-API_KEY = "API KEY" # Not used in demo modeAPI_KEY = "API KEY" # Not used in demo mode
-LIVE_CITY = "Chennai"
-SERVER_URL = "http://127.0.0.1:5000/data"
 
-# Set to True to use a predictable rainfall pattern for the main 'live' sensor
+# --- Configuration ---
+API_KEY = "API KEY"  # Not used in demo mode
+LIVE_CITY = "Chennai"
+SERVER_URL = "https://floodprediction-dashboard.onrender.com/data"
 DEMO_MODE = True
-# This pattern will be used for the 'live_chennai' node to show a predictable event
 DEMO_RAINFALL_PATTERN = [0.0, 5.0, 15.0, 45.0, 60.0, 25.0, 10.0, 0.0, 0.0]
+
 
 SIMULATED_NODES = [
     {"id": "chennai_adyar", "lat": 13.0044, "lon": 80.2534},

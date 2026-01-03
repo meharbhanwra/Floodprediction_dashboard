@@ -75,7 +75,7 @@ function App() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://floodprediction-dashboard.onrender.com');
+                const response = await fetch('https://floodprediction-dashboard.onrender.com/status');
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
 
                 const data = await response.json();
