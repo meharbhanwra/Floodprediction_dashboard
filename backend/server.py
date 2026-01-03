@@ -3,6 +3,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import joblib
+import os
 import pandas as pd
 from collections import deque, defaultdict
 from controlmodule import generate_control_strategies
@@ -11,13 +12,16 @@ app = Flask(__name__)
 CORS(app)
 
 # --- Load Model ---
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "rf_flood_model.joblib")
+
 try:
-    model_data = joblib.load("rf_flood_model.joblib")
+    model_data = joblib.load(MODEL_PATH)
     model = model_data["model"]
     model_features = model_data["features"]
-    print("✅ Model loaded successfully.")
+    print("OK: Model loaded successfully.") # Removed special emoji for encoding safety
 except Exception as e:
-    print(f"❌ Error loading model: {e}")
+    print(f"Error loading model: {e}")
     model = None
 
 # --- NEW FUNCTION FOR THRESHOLD-BASED RISK SCORING ---

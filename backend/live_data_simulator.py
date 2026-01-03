@@ -4,7 +4,7 @@ import time
 import random
 
 # --- Configuration ---
-API_KEY = "API KEY" # Not used in demo mode
+API_KEY = "API KEY" # Not used in demo modeAPI_KEY = "API KEY" # Not used in demo mode
 LIVE_CITY = "Chennai"
 SERVER_URL = "http://127.0.0.1:5000/data"
 
@@ -87,7 +87,7 @@ if __name__ == "__main__":
             }
         else:
             print("LIVE MODE: Fetching real weather from OpenWeatherMap...")
-            live_data = get_live_weather(LIVE_CITY, API_KEY)
+            live_data = get_live_weather(LIVE_CITY, API_KEY=API_KEY)
 
         # Send data for the main 'live' node first
         if live_data:

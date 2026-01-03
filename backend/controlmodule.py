@@ -1,9 +1,18 @@
 import json
+import os
 
 def load_resources():
-    """Loads the location-to-resource mapping from a JSON file."""
-    with open('resources.json', 'r') as f:
-        return json.load(f)
+    """Loads the location-to-resource mapping using an absolute path."""
+    # This gets the directory where controlmodule.py is located
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(base_path, 'resources.json')
+    
+    try:
+        with open(file_path, 'r') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print(f"❌ Error: Could not find {file_path}")
+        return {}
 
 RESOURCES = load_resources()
 

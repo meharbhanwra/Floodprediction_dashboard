@@ -1,16 +1,274 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
-    <title>Chennai Flood Dashboard</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chennai Flood Watch | Official Flood Monitoring & Alert System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(17, 24, 39, 0.8), rgba(17, 24, 39, 0.8)), url('https://images.unsplash.com/photo-1622384381387-a859424854f6?q=80&w=1932&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+<header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-3">
+            <svg class="w-8 h-8 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" />
+            </svg>
+            <span class="text-2xl font-bold text-gray-900">Chennai Flood Watch</span>
+        </div>
+
+        <div class="hidden md:flex items-center space-x-8 text-lg">
+            <a href="#about" class="text-gray-600 hover:text-blue-600 transition">About</a>
+            <a href="#features" class="text-gray-600 hover:text-blue-600 transition">Features</a>
+            <a href="#tech" class="text-gray-600 hover:text-blue-600 transition">Technology</a>
+        </div>
+
+       <div class="flex items-center space-x-4">
+    <!-- Login (shown when logged out) -->
+    <a
+        id="loginBtn"
+        href="#"
+        class="hidden md:block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition shadow-md"
+    >
+        Login
+    </a>
+
+    <!-- Username (shown when logged in) -->
+    <span
+        id="userName"
+        class="hidden md:block font-semibold text-gray-700"
+    ></span>
+
+    <!-- Logout (shown when logged in) -->
+    <button
+        id="logoutBtn"
+        class="hidden md:block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition shadow-md"
+    >
+        Logout
+    </button>
+</div>
+
+    </nav>
+</header>
+
+    <main>
+        <section class="hero-bg text-white">
+            <div class="container mx-auto px-6 py-32 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Real-time Flood Intelligence for Chennai</h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-300 mb-8">Leveraging IoT and AI to predict, monitor, and manage floods in real-time. Protecting Chennai's communities and infrastructure before disaster strikes.</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="/dashboard.html" class="bg-blue-600 text-white font-semibold px-8 py-4 rounded-lg hover:bg-blue-700 transition text-lg shadow-lg">
+                        Access Authority Dashboard
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-900">Beyond Reaction: Proactive Flood Management</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Traditional flood warnings are too slow for the rapid pace of urban life. We provide the foresight and tools to act proactively.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="bg-white p-8 rounded-lg shadow-md border-l-4 border-red-500">
+                        <h3 class="text-2xl font-bold mb-3 text-red-600">The Challenge</h3>
+                        <p class="text-gray-700 text-lg">Sudden flash floods overwhelm city infrastructure with little to no warning, causing widespread disruption, economic loss, and endangering human lives. Reactive measures are often insufficient and costly.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-md border-l-4 border-green-500">
+                        <h3 class="text-2xl font-bold mb-3 text-green-600">Our Solution</h3>
+                        <p class="text-gray-700 text-lg">A smart, integrated system that uses sensor data and an AI-powered prediction engine to provide localized, early warnings and suggest intelligent control strategies for mitigation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                     <h2 class="text-4xl font-bold text-gray-900">An Integrated, Intelligent System</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Our platform combines cutting-edge technology into five core modules.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl transition-shadow">
+                        <div class="flex items-center justify-center h-16 w-16 bg-blue-100 text-blue-600 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Real-time Data Simulation</h3>
+                        <p class="text-gray-600">Continuously simulates rainfall and water level data to feed the prediction engine and test system resilience.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl transition-shadow">
+                        <div class="flex items-center justify-center h-16 w-16 bg-blue-100 text-blue-600 rounded-full mb-4">
+                           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Random Forest AI Model</h3>
+                        <p class="text-gray-600">Predicts flash floods with high accuracy using a powerful Random Forest model trained on historical IMD weather data.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-xl transition-shadow">
+                        <div class="flex items-center justify-center h-16 w-16 bg-blue-100 text-blue-600 rounded-full mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">React-based Dashboard</h3>
+                        <p class="text-gray-600">A dynamic, component-based GIS dashboard showing risk gauges, forecast charts, and actionable alerts for city authorities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tech" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-gray-900">Powered by Modern Technology</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto">Our system is built on a robust, industry-standard technology stack to ensure reliability and performance.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="citizen-alerts" class="py-24 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-bold text-gray-900">Stay Informed. Stay Safe.</h2>
+                <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto mb-8">Receive timely flood alerts and crucial safety information directly.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-300">
+    <div class="container mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            
+            <div>
+                <h4 class="text-xl font-bold text-white mb-4">Chennai Flood Watch</h4>
+                <p class="text-gray-400">A smart city initiative for proactive flood management and citizen safety.</p>
+            </div>
+            
+            <div>
+                <h5 class="font-semibold text-white mb-4">Emergency Helplines</h5>
+                <ul class="space-y-3 text-gray-400">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.518.76a11.024 11.024 0 006.292 6.292l.76-1.518a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+                        <a href="tel:112" class="hover:text-white transition">112 - National Emergency</a>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+                        <a href="tel:100" class="hover:text-white transition">100 - Police</a>
+                    </li>
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010-1.414l3-3a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0zm8.586 8.586a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414l3 3a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
+                        <a href="tel:101" class="hover:text-white transition">101 - Fire & Rescue</a>
+                    </li>
+                     <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>
+                        <a href="tel:1077" class="hover:text-white transition">1077 - Disaster Mgmt.</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div>
+                <h5 class="font-semibold text-white mb-4">Legal</h5>
+                 <ul>
+                    <li class="mb-2"><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                    <li class="mb-2"><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h5 class="font-semibold text-white mb-4">Contact Us</h5>
+                <p class="text-white-500 mb-3 text-sm">Developed by:</p>
+                <ul class="space-y-3 text-gray-400">
+                    <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                        <a href="mailto:ishani.jindal@example.com" class="hover:text-white transition">Ishani Jindal</a>
+                    </li>
+                     <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                        <a href="mailto:aditimehta307@gmail.com" class="hover:text-white transition">Aditi Mehta</a>
+                    </li>
+                     <li class="flex items-center">
+                        <svg class="w-5 h-5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                        <a href="mailto:meharbhanwra1004@gmail.com" class="hover:text-white transition">Mehar Bhanwra</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+        <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500">
+            <p>&copy; 2025 Chennai Flood Watch. All rights reserved. An initiative by the City of Chennai.</p>
+        </div>
+    </div>
+</footer>
+
+<script
+  async
+  crossorigin="anonymous"
+  data-clerk-publishable-key="pk_test_ZGFyaW5nLWxvYnN0ZXItMTIuY2xlcmsuYWNjb3VudHMuZGV2JA"
+  src="https://daring-lobster-12.clerk.accounts.dev/npm/@clerk/clerk-js@5/dist/clerk.browser.js"></script>
+</script>
+
+<script>
+  window.addEventListener("load", async () => {
+    await Clerk.load();
+
+    const loginBtn = document.getElementById("loginBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const userName = document.getElementById("userName");
+
+    function updateAuthButtons() {
+      const isLoggedIn = !!Clerk.user;
+
+      if (isLoggedIn) {
+        // 🔒 HIDE LOGIN PROPERLY (important fix)
+        loginBtn.classList.add("hidden");
+        loginBtn.classList.remove("md:block");
+
+        logoutBtn.classList.remove("hidden");
+        userName.classList.remove("hidden");
+
+        userName.textContent =
+          Clerk.user.firstName ||
+          Clerk.user.username ||
+          Clerk.user.primaryEmailAddress?.emailAddress ||
+          "";
+      } else {
+        // 🔓 SHOW LOGIN AGAIN
+        loginBtn.classList.remove("hidden");
+        loginBtn.classList.add("md:block");
+
+        logoutBtn.classList.add("hidden");
+        userName.classList.add("hidden");
+        userName.textContent = "";
+      }
+    }
+
+    // Initial state
+    updateAuthButtons();
+
+    // React to auth changes
+    Clerk.addListener(updateAuthButtons);
+
+    // Login
+    loginBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      Clerk.openSignIn();
+    });
+
+    // Logout
+    logoutBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      await Clerk.signOut();
+    });
+  });
+</script>
+
+</body>
 </html>

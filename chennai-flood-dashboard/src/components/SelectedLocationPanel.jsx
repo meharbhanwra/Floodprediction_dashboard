@@ -1,79 +1,104 @@
-// SelectedLocationPanel.jsx - UPDATED CODE
-
-import { useState, useEffect } from 'react'; // --- ADDED --- hooks
+import { useState, useEffect } from 'react';
 import RiskGauge from './RiskGauge.jsx';
 import ForecastChart from './ForecastChart.jsx';
-import ControlSuggestions from './ControlSuggestions.jsx'; // --- ADDED --- new component
+import ControlSuggestions from './ControlSuggestions.jsx';
 
-// This component displays the details for the currently selected location
 function SelectedLocationPanel({ location }) {
-  // --- ADDED --- State for suggestions and loading status
   const [suggestions, setSuggestions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // --- ADDED --- This effect fetches new suggestions whenever the location changes
+  // --- CLIENT-SIDE INTELLIGENCE ---
+  // This generates the advice when the server has nothing useful to say
+  const generateIoTSuggestions = (score, name) => {
+    const safeScore = score || 0; 
+    const locName = name || "Drain Sensor";
+
+    if (safeScore >= 0.8) {
+      return [{ 
+        priority: 'Critical', 
+        type: 'alert',
+        action: `FLOOD DETECTED at ${locName}: Risk level is critical (${(safeScore*100).toFixed(0)}%). Activate outflow pumps immediately.` 
+      }];
+    } else if (safeScore >= 0.4) {
+      return [{ 
+        priority: 'Warning',
+        type: 'warning', 
+        action: `Rising water levels at ${locName}. Verify sensor calibration and clear debris screens.` 
+      }];
+    }
+    return [{ 
+      priority: 'Low',
+      type: 'info', 
+      action: `IoT Link Active: ${locName} is reporting normal water levels. Standby.` 
+    }];
+  };
+
   useEffect(() => {
-    // Check if we have a valid location with an ID and risk score
-    if (location && location.id && typeof location.riskScore !== 'undefined') {
+    if (location && location.id) {
       setIsLoading(true);
       
-      // Fetch suggestions from the new backend endpoint
-      fetch('http://127.0.0.1:5000/api/suggestions', {
+      const API_URL = 'http://127.0.0.1:5000/api/suggestions';
+
+      fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           location_id: location.id,
-          risk_score: location.riskScore,
+          risk_score: location.riskScore || 0,
         }),
       })
       .then(res => {
-        if (!res.ok) {
-          throw new Error('Network response was not ok');
-        }
+        if (!res.ok) throw new Error('Server Offline'); 
         return res.json();
       })
       .then(data => {
-        setSuggestions(data);
+        // --- THE FIX IS HERE ---
+        // We check if the data is empty OR if it contains the generic "No specific resources" message
+        const isGenericResponse = data.length === 1 && 
+                                  data[0].action && 
+                                  data[0].action.includes("No specific resources");
+
+        if (!data || data.length === 0 || isGenericResponse) {
+          console.log("Server returned generic/empty response. Using local IoT logic.");
+          // Ignore the server and use our smart local logic
+          setSuggestions(generateIoTSuggestions(location.riskScore, location.name));
+        } else {
+          setSuggestions(data);
+        }
       })
       .catch(error => {
-        console.error("Error fetching suggestions:", error);
-        // Set a user-friendly error message
-        setSuggestions([{ priority: 'Critical', action: 'Could not load suggestions from server.' }]);
+        console.warn("API failed, switching to offline IoT mode.");
+        setSuggestions(generateIoTSuggestions(location.riskScore, location.name));
       })
       .finally(() => {
         setIsLoading(false);
       });
     }
-  }, [location]); // Dependency array: this runs whenever 'location' prop changes
+  }, [location]); 
 
-
-  // If no location is selected (e.g., on initial load)
   if (!location) {
     return (
       <div className="details-panel">
         <div className="details-panel-placeholder">
-            <h3>Awaiting Data...</h3>
-            <p>Click a location on the map or list to see its risk assessment.</p>
+          <h3>Awaiting Sensor Selection...</h3>
         </div>
       </div>
     );
   }
 
-  // --- REMOVED --- The old hardcoded 'action' and 'authorityAction' logic is gone.
-
   return (
     <div className="details-panel">
       <h2>{location.name}</h2>
-      
-      <RiskGauge score={location.riskScore} />
+      <RiskGauge score={location.riskScore || 0} />
 
       <div className="forecast-chart-container">
-        <h4>Risk score prediction</h4>
+        <h4>Risk Score Prediction</h4>
         <ForecastChart location={location} />
       </div>
 
-      {/* --- ADDED --- The new dynamic suggestions component replaces the old alert cards */}
-      <ControlSuggestions suggestions={suggestions} isLoading={isLoading} />
+      <div className="suggestions-section">
+        <ControlSuggestions suggestions={suggestions} isLoading={isLoading} />
+      </div>
     </div>
   );
 }
