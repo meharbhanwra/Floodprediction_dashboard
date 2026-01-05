@@ -92,9 +92,10 @@ function SelectedLocationPanel({ location }) {
       <RiskGauge score={location.riskScore || 0} />
 
       <div className="forecast-chart-container">
-        <h4>Risk Score Prediction</h4>
-        <ForecastChart location={location} />
-      </div>
+      <h4 style={{ color: '#1a365d' }}>Risk Score Prediction</h4> 
+      <ForecastChart location={location} />
+    </div>
+
 
       <div className="suggestions-section">
         <ControlSuggestions suggestions={suggestions} isLoading={isLoading} />

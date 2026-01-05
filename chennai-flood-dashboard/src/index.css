@@ -15,7 +15,6 @@ body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   background-color: var(--main-bg);
-  overflow: hidden; /* Prevents scrolling */
 }
 
 .dashboard-container {
@@ -99,6 +98,7 @@ body {
   justify-content: space-between;
   padding: 0.75rem 0.5rem;
   border-bottom: 1px solid var(--border-color);
+  color: black;
 }
 .show-more-section {
   margin-top: auto; /* Pushes button to the bottom */
