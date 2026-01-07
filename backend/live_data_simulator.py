@@ -98,7 +98,7 @@ if __name__ == "__main__":
             send_to_server(simulated_data)
             time.sleep(0.2) # Small delay between sends
             
-        wait_time = 15
+        wait_time = 5
         print(f"\n--- Cycle complete. Waiting for {wait_time} seconds... ---")
         time.sleep(wait_time)
         cycle_count += 1

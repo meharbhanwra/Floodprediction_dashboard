@@ -37,7 +37,7 @@ function SelectedLocationPanel({ location }) {
     if (location && location.id) {
       setIsLoading(true);
       
-      const API_URL = 'http://127.0.0.1:5000/api/suggestions';
+      const API_URL = 'https://floodprediction-dashboard.onrender.com/api/suggestions';
 
       fetch(API_URL, {
         method: 'POST',
