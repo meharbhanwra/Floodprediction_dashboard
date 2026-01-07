@@ -1,4 +1,4 @@
-# 🌊 Chennai Flood Watch: AIoT Flash Flood Prediction & Monitoring
+# 🌊 Chennai Flood Watch: AI IoT Flash Flood Prediction & Monitoring
 
 A proactive, real-time decision support system that integrates IoT telemetry with Machine Learning to predict and manage urban flash floods in Chennai.
 
@@ -45,8 +45,8 @@ To validate the system, we utilized a **Hardware-in-the-Loop (HIL)** approach us
 (<img width="748" height="601" alt="Screenshot 2026-01-07 101342" src="https://github.com/user-attachments/assets/4587f118-efd6-4d13-9a35-84309551ed7d" />)
 *Caption: The Wokwi ESP32 interface used for manual data injection.*
 
-**📽️ Watch the Live Data Flow:**
-<video src="https://drive.google.com/file/d/1Gxyo06AlTnsa0b9eJqM3X46hL2GmJfAB/view?usp=sharing" width="600" controls></video>
+### 📽️ Live Data Flow Demo
+▶️ **[Click here to watch the demo video](https://drive.google.com/file/d/1Gxyo06AlTnsa0b9eJqM3X46hL2GmJfAB/view)**
 *In this video, you can see that when the button is pushed in Wokwi, the data passes to the model, which predicts the risk score on the live map in real-time.*
 
 ---
