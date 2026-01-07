@@ -53,7 +53,7 @@ To validate the system, we utilized a **IOT SIMULATION** approach using **Wokwi*
 ---
 
 ## 👥 The Team
-* **Ishani Jindal**: full stack developer/ Ui UX designing
+* **Ishani Jindal**: Full stack developer, Ui UX designing
 * **Aditi Mehta**: 
 * **Mehar Bhanwra**: 
 
@@ -65,8 +65,10 @@ To validate the system, we utilized a **IOT SIMULATION** approach using **Wokwi*
    git clone [https://github.com/ishanijdev/Floodprediction_dashboard.git](https://github.com/ishanijdev/Floodprediction_dashboard.git)
 
 2. **Setup Frontend**
+   ```bash
    cd chennai-flood-dashboard
    npm install
 
-3. **Run the Full Ecosystem**
+4. **Run the Full Ecosystem**
+   ```bash
    npm run start-all
