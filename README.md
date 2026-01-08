@@ -58,7 +58,21 @@ To validate the system, we utilized a **IoT SIMULATION** approach using **Wokwi*
 | Ishani Jindal  | Full stack developer, UI/UX designing                  |
 | Aditi Mehta    |                                                        |
 | Mehar Bhanwra  | Set up wiring, wrote C++ logic for ESP32               |
- 
+
+ ## 🧩 Previously Implemented Features (Removed)
+
+- **Firebase Phone Authentication (OTP/SMS)**  
+  Implemented for user verification using Firebase Auth.
+
+- **Firebase Realtime Database Integration**  
+  Used to store and manage user-related data.
+
+- **Twilio SMS Emergency Alerting**  
+  Initially integrated for emergency notifications.
+
+### Why it was removed
+The Twilio-based SMS alerting system was removed due to **inconsistent delivery latency**, which made it unsuitable for time-critical emergency scenarios. The system was refactored to prioritize reliability and faster response mechanisms.
+
 ---
 
 ## 🛠️ Local Setup
