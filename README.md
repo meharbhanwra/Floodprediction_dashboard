@@ -11,7 +11,7 @@ A proactive, real-time decision support system that integrates IoT telemetry wit
 * **Real-Time GIS Mapping**: Interactive map interface using **Leaflet.js** to visualize flood risk scores across multiple city nodes.
 * **Authority Control Panel**: Secure dashboard for officials to monitor live sensor feeds, view historical trends, and prepare emergency broadcasts.
 * **Role-Based Security**: Integrated with **Clerk** to ensure only authorized personnel can access the command center.
-* **IOT Simulation**: A custom IOT simulation that bridges virtual hardware (Wokwi) with live infrastructure.
+* **IOT Simulation**: A custom IoT simulation that bridges virtual hardware (Wokwi) with live infrastructure.
 
 ---
 
@@ -32,7 +32,7 @@ The system follows a distributed architecture to separate the **Intelligence Lay
 ---
 
 ## 📡 Hardware Simulation & Event Injection
-To validate the system, we utilized a **IOT SIMULATION** approach using **Wokwi**. Instead of waiting for real rain, we manually inject sensor data to test the system's response to critical thresholds.
+To validate the system, we utilized a **IoT SIMULATION** approach using **Wokwi**. Instead of waiting for real rain, we manually inject sensor data to test the system's response to critical thresholds.
 
 ### **The "Sensor-to-Score" Workflow**
 1. **Manual Trigger**: An official pushes an increment button on the **ESP32 (Wokwi)** to simulate rising water levels.
@@ -53,10 +53,12 @@ To validate the system, we utilized a **IOT SIMULATION** approach using **Wokwi*
 ---
 
 ## 👥 The Team
-* **Ishani Jindal**: Full stack developer, Ui UX designing
-* **Aditi Mehta**: 
-* **Mehar Bhanwra**: 
-
+| Name           | Role / Contribution                                    |
+|----------------|--------------------------------------------------------|
+| Ishani Jindal  | Full stack developer, UI/UX designing                  |
+| Aditi Mehta    |                                                        |
+| Mehar Bhanwra  | Set up wiring, wrote C++ logic for ESP32               |
+ 
 ---
 
 ## 🛠️ Local Setup
