@@ -78,7 +78,7 @@ The Twilio-based SMS alerting system was removed due to **inconsistent delivery 
 ## 🛠️ Local Setup
 1. **Clone the repository**:
    ```bash
-   git clone [https://github.com/ishanijdev/Floodprediction_dashboard.git](https://github.com/ishanijdev/Floodprediction_dashboard.git)
+   git clone https://github.com/ishanijdev/Floodprediction_dashboard.git
 
 2. **Setup Frontend**
    ```bash
