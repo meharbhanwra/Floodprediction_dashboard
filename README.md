@@ -11,7 +11,7 @@ A proactive, real-time decision support system that integrates IoT telemetry wit
 * **Real-Time GIS Mapping**: Interactive map interface using **Leaflet.js** to visualize flood risk scores across multiple city nodes.
 * **Authority Control Panel**: Secure dashboard for officials to monitor live sensor feeds, view historical trends, and prepare emergency broadcasts.
 * **Role-Based Security**: Integrated with **Clerk** to ensure only authorized personnel can access the command center.
-* **IOT Simulation**: A custom IoT simulation that bridges virtual hardware (Wokwi) with live infrastructure.
+* **IoT Simulation**: A custom IoT simulation that bridges virtual hardware (Wokwi) with live infrastructure.
 
 ---
 
