@@ -56,7 +56,7 @@ To validate the system, we utilized a **IoT SIMULATION** approach using **Wokwi*
 | Name           | Role / Contribution                                    |
 |----------------|--------------------------------------------------------|
 | Ishani Jindal  | Full stack developer, UI/UX designing                  |
-| Aditi Mehta    |                                                        |
+| Aditi Mehta    | Frontend developer                                                        |
 | Mehar Bhanwra  | Set up wiring, wrote C++ logic for ESP32               |
 
  ## 🧩 Previously Implemented Features (Removed)
